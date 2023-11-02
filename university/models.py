@@ -35,7 +35,7 @@ class Docente(models.Model):
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
     formacion = models.CharField(max_length=100)
-    photo = models.ImageField(upload_to='docentes/')
+    photo = models.ImageField(upload_to='docentes/fotos/')
     pub_date = models.DateField(auto_now_add=True)
     
     def get_absolute_url(self):

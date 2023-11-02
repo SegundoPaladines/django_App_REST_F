@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block section %}
+    <h2>{{ object.name }}</h2>
+    <hr>
+{% endblock section %}
+
+{% block maincontent %}
+  <div class="container">
+     <table border="1px">
+      <tr>
+          {% for p in object.get_programas.all %}
+             <td>
+               <div>{{ p. }} {{ p.name }}</div>
+               <div>
+                  <a href="{% url "prog-detail" p.id %}">
+                     <img src="{% static p.logo.url %}" style="width:170px;height:200px"/>
+                  </a>
+               </div>
+             </td>
+           {% endfor %}
+       </tr> 
+      </table>
+   </div>
+{% endblock maincontent %}

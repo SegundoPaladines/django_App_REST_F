@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block section %}
+ <h2>Facultades</h2>
+ <hr>
+{% endblock section %}
+
+{% block maincontent %}
+   <div>
+      {% for c in object_list %}
+        <h2>Universidad: {{c.universidad}}</h2> <br>
+        <a href="{% url 'fac-detail' c.pk %}">
+            {{ c.name }} <br>
+        </a></h2>
+        <h2><img src="{% static c.logo.url %}" style="width:70px;height:80px"/>
+      {% endfor %}
+ </div>
+{% endblock maincontent %}

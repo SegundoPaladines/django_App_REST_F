@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block section %}
+ <h2>Docentes</h2>
+ <hr>
+{% endblock section %}
+
+{% block maincontent %}
+   <div>
+      {% for c in object_list %}
+      <a href="{% url 'doc-detail' c.pk %}">
+        {{ c.first_name }} {{ c.last_name }} <br>
+    </a></h2>
+      
+      {% if c.programa_id %}
+        ( <a href="{% url "prog-detail" c.programa_id %}">
+            {{ c.programa }}
+          </a> )
+      {% endif %}
+        <h2>Programa: {{c.programa}}</h2> <br>
+        <img src="{% static c.photo.url %}" style="width:250px;height:330px" />
+
+        <br><br><br>
+      {% endfor %}
+ </div>
+{% endblock maincontent %}
