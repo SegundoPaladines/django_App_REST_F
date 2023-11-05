@@ -24,8 +24,85 @@
             display: flex;
             flex-wrap: wrap;
         }
-        .card{
-            margin: 10px;
+        .card {
+            margin: 15px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
         }
+        .card:hover{
+            transform: scale(1.05);
+        }
+
+        .contenedor-formulario {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+        }
+
+        .formulario_fac {
+            width: 80%;
+            padding: 5%;
+            margin-top: -5%;
+        }
+        
+        .formulario_fac p {
+            width: 100%;
+        }
+
+        .formulario_fac label{
+            width: 100%;
+        }
+        
+        .formulario_fac input {
+            width: 100%;
+            border: none;
+            padding: 1.5%;
+            outline: none;
+            border-bottom: 2px solid gray;
+        }
+
+        .formulario_fac input:focus {
+            border-bottom: 2px solid green;
+        }
+
+        .formulario_fac select {
+            width: 100%;
+            border: none;
+            padding: 1.5%;
+            outline: none;
+            border-bottom: 2px solid gray;
+        }
+
+        .formulario_fac select:focus {
+            border-bottom: 2px solid green;
+        }
+
+        .formulario_fac a {
+            margin-top: 10px;
+            width: 100%;
+            background-color: #DD0C09;
+            color:white;
+        }
+
+        .formulario_fac a:hover {
+            background-color: #A40907;
+            color:white;
+        }
+
+        .formulario_fac button{
+            margin-top: 10px;
+            width: 100%;
+            background-color:rgb(6, 152, 23);
+            color:white;
+            border: none;
+            border-radius: 5px;
+            padding: 0.85%;
+        }
+
+        .formulario_fac button:hover{
+            background-color:rgb(4, 95, 14);
+            color:white;
+        }
+        
     </style>
 {% endblock %}

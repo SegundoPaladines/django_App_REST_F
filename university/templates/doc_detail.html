@@ -11,5 +11,10 @@
     <img src="{% static object.photo.url %}" style="width:170px;height:200px"/>
   </div>
   <hr />
+  {% if user.is_authenticated %}
+    <a href = "{% url 'doc-update' object.pk %}" class = "btn btn-info" > Editar </a>
+    <a href = "{% url 'doc-delete' object.pk %}" class = "btn btn-danger" > Eliminar </a>
+  {% endif %}
+  <br>
   <p> Programa: <a href="{% url 'prog-detail' object.programa.pk %}"> {{object.programa.name}} </p>
 {% endblock maincontent %}

@@ -1,10 +1,28 @@
 {% extends "base.html" %}
 
 {% block maincontent %}
-  <form enctype="multipart/form-data" method="post">{% csrf_token %}
-         {{ form.as_p }}
-        <br>
-       <button type="submit">Save</button>
-       <a class='btn' href="{% url 'lista-programas' %}">Cancel</a>
-  </form>
+
+<div class = "container">
+  <div class = "row">
+    <div class = "col contenedor-formulario">
+      {% if request.path == '/programa/create/' %}
+        <h3> Crear Programa</h3>
+      {% endif %}
+      {% if 'update' in request.path %}
+        <h3> Editando Programa {{object.name}}</h3>
+      {% endif %}
+    </div>
+  </div>
+  <hr />
+  <div class = "row">
+    <div class = "col contenedor-formulario">
+      <form class ="formulario_fac" enctype="multipart/form-data" method="post">{% csrf_token %}
+        {{ form.as_p }}
+          <br>
+          <button type="submit">Save</button>
+          <a class='btn' href="{% url 'lista-programas' %}">Cancel</a>
+      </form>
+    </div>
+  </div>
+</div>
 {% endblock maincontent%}
