@@ -20,10 +20,14 @@ from university import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('universidad/facultades/', views.FacultadesListView.as_view(), name='lista-facultades'), #todas las facultades
+    path('', views.UniversidadView.as_view(), name='udenar'), # Todas las facultades
+    path('universidad/facultades/', views.FacultadesListView.as_view(), name='lista-facultades'), #detalle de la facultad
     path('facultad/<int:pk>/detail/',
          views.FacultadDetailView.as_view(), name='fac-detail'),
-    path('universidad/programas/', views.ProgramasListView.as_view(), name='lista-programas'), #todos los programas
+    path('facultad/<int:pk>/update/',views.FacultadUpdate.as_view(),name='fac-update'), # Editar facultad
+    path('facultad/<int:pk>/delete/', views.FacultadDelete.as_view(), name='fac-delete'), # ELiminar Facultad
+    path('facultad/create/', views.FacultadCreate.as_view(), name='fac-create'), # Crear Facultad
+    path('universidad/programas/', views.ProgramasListView.as_view(), name='lista-programas'), #Todos los programas
     path('programa/<int:pk>/detail/',
             views.ProgramaDetailView.as_view(), name='prog-detail'),
     path('universidad/docentes/', views.DocentesListView.as_view(), name='lista-docentes'), #todos los docentes

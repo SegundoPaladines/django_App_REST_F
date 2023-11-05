@@ -2,6 +2,7 @@
 {% load static %}
 {% block section %}
  <h2>Facultades</h2>
+ <a href ="{% url 'fac-create' %}" class="btn btn-success">Crear Nueva</a>
  <hr>
 {% endblock section %}
 
@@ -13,6 +14,9 @@
             {{ c.name }} <br>
         </a></h2>
         <h2><img src="{% static c.logo.url %}" style="width:70px;height:80px"/>
+        <hr/>
+        <a class="btn btn-info" href="{% url 'fac-update' c.pk %}">Editar</a>
+        <a class="btn btn-danger" href="{% url 'fac-delete' c.pk %}">Eliminar</a>
       {% endfor %}
  </div>
 {% endblock maincontent %}

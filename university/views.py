@@ -1,8 +1,10 @@
 from django.urls import reverse_lazy 
-from django.views.generic import CreateView, DeleteView, UpdateView, ListView, DetailView
+from django.views.generic import CreateView, TemplateView, DeleteView, UpdateView, ListView, DetailView
 from university.models import Facultad, Programa, Docente
 
 # Create your views here.
+class UniversidadView(TemplateView):
+    template_name='universidad.html'
 
 class FacultadesListView(ListView):
     model = Facultad
@@ -12,6 +14,21 @@ class FacultadDetailView(DetailView):
     model = Facultad
     template_name = "fac_detail.html"
 
+class FacultadUpdate(UpdateView):
+    model = Facultad
+    fields = '__all__'
+    template_name = "facultad_form.html"
+    
+class FacultadDelete(DeleteView):
+    model = Facultad
+    template_name = "facultad_confirm_delete.html"
+    success_url = reverse_lazy('lista-facultades')
+
+class FacultadCreate(CreateView):
+    model = Facultad
+    fields = '__all__'
+    template_name = "facultad_form.html"
+    
 class ProgramasListView(ListView):
     model = Programa
     template_name = "prog_list.html"

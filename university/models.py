@@ -14,10 +14,13 @@ class Facultad(models.Model):
     def __str__(self):
         return self.name
     
+    def get_absolute_url(self):
+        return reverse('lista-facultades')
+    
 #modelo para el programa
 class Programa(models.Model):
     """ Un Programa"""
-    facultad = models.ForeignKey('Facultad', on_delete=models.PROTECT,related_name='get_programas' )
+    facultad = models.ForeignKey('Facultad', on_delete=models.CASCADE, related_name='get_programas' )
     name = models.CharField(max_length=50)
     logo = models.ImageField(upload_to='programas/logos/')
     pub_date = models.DateField(auto_now_add=True)
@@ -31,7 +34,7 @@ class Programa(models.Model):
 #modelo docentes
 class Docente(models.Model):
     """ Docentes """
-    programa = models.ForeignKey('Programa', on_delete=models.PROTECT,related_name='get_docentes' )
+    programa = models.ForeignKey('Programa', on_delete=models.CASCADE,related_name='get_docentes' )
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
     formacion = models.CharField(max_length=100)

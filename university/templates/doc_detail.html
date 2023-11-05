@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block section %}
+    <h2>{{ object.first_name }} {{ object.last_name }}</h2>
+    <hr>
+{% endblock section %}
+
+{% block maincontent %}
+  <div class="container">
+    <p>Formacion: {{object.formacion}}</p>
+    <img src="{% static object.photo.url %}" style="width:170px;height:200px"/>
+  </div>
+  <hr />
+  <p> Programa: <a href="{% url 'prog-detail' object.programa.pk %}"> {{object.programa.name}} </p>
+{% endblock maincontent %}
