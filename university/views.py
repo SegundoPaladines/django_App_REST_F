@@ -59,3 +59,18 @@ class DocentesListView(ListView):
 class DocenteDetailView(DetailView):
     model = Docente
     template_name = "doc_detail.html"
+    
+class DocenteUpdate(UpdateView):
+    model = Docente
+    fields = '__all__'
+    template_name = "docente_form.html"
+    
+class DocenteDelete(DeleteView):
+    model = Docente
+    template_name = "docente_confirm_delete.html"
+    success_url = reverse_lazy('lista-docentes')
+
+class DocenteCreate(CreateView):
+    model = Docente
+    fields = '__all__'
+    template_name = "docente_form.html"

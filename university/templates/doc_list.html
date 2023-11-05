@@ -2,6 +2,7 @@
 {% load static %}
 {% block section %}
  <h2>Docentes</h2>
+ <a href = "{% url 'doc-create' %}" class = "btn btn-success" > Crear Nuevo </a>
  <hr>
 {% endblock section %}
 
@@ -19,7 +20,9 @@
       {% endif %}
         <h2>Programa: {{c.programa}}</h2> <br>
         <img src="{% static c.photo.url %}" style="width:250px;height:330px" />
-
+        <br>
+        <a href = "{% url 'doc-update'  c.pk %}" class = "btn btn-info" > Editar </a>
+        <a href = "{% url 'doc-delete' c.pk %}" class = "btn btn-danger" > Eliminar </a>
         <br><br><br>
       {% endfor %}
  </div>

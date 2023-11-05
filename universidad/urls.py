@@ -36,4 +36,7 @@ urlpatterns = [
     path('universidad/docentes/', views.DocentesListView.as_view(), name='lista-docentes'), #todos los docentes
     path('docente/<int:pk>/detail/',
             views.DocenteDetailView.as_view(), name='doc-detail'),
+    path('docente/<int:pk>/update/',views.DocenteUpdate.as_view(), name='doc-update'), # Editar docente
+    path('docente/<int:pk>/delete/', views.DocenteDelete.as_view(), name='doc-delete'), # ELiminar docente
+    path('docente/create/', views.DocenteCreate.as_view(), name='doc-create'), # Crear docente
 ]
