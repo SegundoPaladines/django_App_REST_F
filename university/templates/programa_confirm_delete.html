@@ -1,8 +1,15 @@
 {% extends 'base.html' %} 
 {% block maincontent %}
- <form action=""method="post">{% csrf_token %}
-     <p>Eliminar "{{ object.name }}"?</p>
-     <input type="submit" value="Confirm" />
-     <a class='btn'href="{% url 'lista-programas' %}">Cancel</a>
- </form>
+<div class = "container">
+    <div class = "row">
+      <div class = "col contenedor-formulario">
+        <form class="elimina_fac" action=""method="post">{% csrf_token %}
+            <p> <h1>¿Está seguro de querer eliminar el programa "{{ object.name }}"?</h1></p>
+            <hr/>
+            <input type="submit" value="Confirm" />
+            <a class='btn'href="{% url 'lista-programas' %}">Cancel</a>
+        </form>
+      </div>
+    </div>
+</div>
 {% endblock maincontent %}

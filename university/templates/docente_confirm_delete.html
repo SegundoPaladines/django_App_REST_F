@@ -1,8 +1,15 @@
 {% extends 'base.html' %} 
 {% block maincontent %}
- <form action=""method="post">{% csrf_token %}
-     <p>Eliminar a "{{ object.first_name }} {{object.last_name}}"?</p>
-     <input type="submit" value="Confirm" />
-     <a class='btn'href="{% url 'lista-docentes' %}">Cancel</a>
- </form>
+<div class = "container">
+    <div class = "row">
+      <div class = "col contenedor-formulario">
+        <form class="elimina_fac" action=""method="post">{% csrf_token %}
+            <p> <h1>¿Está seguro de querer eliminar al docente "{{ object.first_name }} {{object.last_name}}"?</h1></p>
+            <hr/>
+            <input type="submit" value="Confirm" />
+            <a class='btn'href="{% url 'lista-docentes' %}">Cancel</a>
+        </form>
+      </div>
+    </div>
+</div>
 {% endblock maincontent %}

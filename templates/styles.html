@@ -6,6 +6,12 @@
         .negro:hover{
             color:green;
         }
+        .negro2{
+            color:black;
+        }
+        .negro2:hover{
+            color:white;
+        }
         .card-img-container {
             position: relative;
             overflow: hidden;
@@ -104,5 +110,55 @@
             color:white;
         }
         
+        .elimina_fac{
+            width: 80%;
+            padding: 5%;
+            margin-top: -5%;
+        }
+
+        .elimina_fac input{
+            border: none;
+            border-radius: 5px;
+            padding: 0.85%;
+            margin-top: 10px;
+            width: 100%;
+            background-color: #DD0C09;
+            color:white;
+        }
+
+        .elimina_fac input:hover{
+            background-color: #A40907;
+        }
+
+        .elimina_fac a{
+            margin-top: 10px;
+            width: 100%;
+            background-color:rgb(6, 152, 23);
+            color:white;
+            border: none;
+            border-radius: 5px;
+            padding: 0.85%;
+        }
+
+        .elimina_fac a:hover{
+            background-color:rgb(4, 95, 14);
+            color:white;
+        }
+
+        .card-img-container_prog {
+            position: relative;
+            overflow: hidden;
+        }
+    
+        .card-img-container_prog::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.7), rgba(119, 163, 69, 0.9));
+        }
+
     </style>
 {% endblock %}

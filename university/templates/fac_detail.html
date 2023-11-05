@@ -6,24 +6,22 @@
 {% endblock section %}
 
 {% block maincontent %}
-  <div class="container">
-     <table border="1px">
-      <tr>
-          {% for p in object.get_programas.all %}
-             <td>
-               <div>{{ p. }} {{ p.name }}</div>
-               <div>
-                  <a href="{% url "prog-detail" p.id %}">
-                     <img src="{% static p.logo.url %}" style="width:170px;height:200px"/>
-                  </a>
+  <div class="contenedor container">
+
+      {% for p in object.get_programas.all %}
+         <div class="card" style="width: 18rem;">
+            <a href="{% url "prog-detail" p.id %}" class="negro">
+               <img src="{% static p.logo.url %}" style="width:18rem; height:18rem"/>
+               <div class="card-body">
+                  <p class="card-text">{{ p. }} {{ p.name }}</p>
+                  <hr />
+                  {% if user.is_authenticated %}
+                     <a class="btn btn-info" href="{% url 'prog-update' p.pk %}">Editar</a>
+                     <a class="btn btn-danger" href="{% url 'prog-delete' p.pk %}">Eliminar</a>
+                  {% endif %}
                </div>
-               {% if user.is_authenticated %}
-                  <a class="btn btn-info" href="{% url 'prog-update' p.pk %}">Editar</a>
-                  <a class="btn btn-danger" href="{% url 'prog-delete' p.pk %}">Eliminar</a>
-               {% endif %}
-            </td>
-           {% endfor %}
-       </tr> 
-      </table>
+            </a>
+         </div>
+      {% endfor %}
    </div>
 {% endblock maincontent %}

@@ -9,19 +9,30 @@
 {% endblock section %}
 
 {% block maincontent %}
-   <div>
+   <div class = "contenedor container">
       {% for p in object_list %}
-        <h2>Facultad: {{p.facultad}}</h2> <br>
-        <a href="{% url 'prog-detail' p.pk %}">
-            {{ p.name }} <br>
-        </a></h2>
-        <h2><img src="{% static p.logo.url %}" style="width:70px;height:80px"/>
-        
-        <br>
-        {% if user.is_authenticated %}
-          <a href = "{% url 'prog-update' p.pk %}" class = "btn btn-info" > Editar</a>
-          <a href = "{% url 'prog-delete' p.pk %}" class = "btn btn-danger"> Eliminar </a>
-        {% endif %}
+        <div class="card bg-dark" style="width: 18rem;">
+          <a href="{% url 'prog-detail' p.pk %}" class="negro2">
+            <div class="card-img-container_prog">
+              <img
+                  style="18rem; height:18rem"
+                  src="{% static p.logo.url %}" 
+                  class="card-img-top" 
+                  alt="Imagen {{c.name}}"
+              >
+            </div>
+            <div class="card-img-overlay">
+              <h5 class="card-title">{{ p.name }}</h5>
+              <p class="card-text">Este programa se encuentra adscrito a la Facultad <a class = "negro2" href="{% url 'fac-detail' p.facultad.pk %}">{{p.facultad}}</a>.</p>
+              <br /><br /><br /><br />
+              <hr />
+              {% if user.is_authenticated %}
+                <a href = "{% url 'prog-update' p.pk %}" class = "btn btn-info" > Editar</a>
+                <a href = "{% url 'prog-delete' p.pk %}" class = "btn btn-danger"> Eliminar </a>
+              {% endif %}
+            </div>
+          </a>
+        </div>
       {% endfor %}
  </div>
 {% endblock maincontent %}
