@@ -36,6 +36,21 @@ class ProgramasListView(ListView):
 class ProgramaDetailView(DetailView):
     model = Programa
     template_name = "prog_detail.html"
+    
+class ProgramaUpdate(UpdateView):
+    model = Programa
+    fields = '__all__'
+    template_name = "programa_form.html"
+    
+class ProgramaDelete(DeleteView):
+    model = Programa
+    template_name = "programa_confirm_delete.html"
+    success_url = reverse_lazy('lista-programas')
+
+class ProgramaCreate(CreateView):
+    model = Programa
+    fields = '__all__'
+    template_name = "programa_form.html"
 
 class DocentesListView(ListView):
     model = Docente

@@ -2,6 +2,7 @@
 {% load static %}
 {% block section %}
  <h2>Programas</h2>
+ <a href = "{% url 'prog-create' %}" class = "btn btn-success"> Crear Nuevo </a>
  <hr>
 {% endblock section %}
 
@@ -13,6 +14,10 @@
             {{ p.name }} <br>
         </a></h2>
         <h2><img src="{% static p.logo.url %}" style="width:70px;height:80px"/>
+        
+        <br>
+        <a href = "{% url 'prog-update' p.pk %}" class = "btn btn-info" > Editar</a>
+        <a href = "{% url 'prog-delete' p.pk %}" class = "btn btn-danger"> Eliminar </a>
       {% endfor %}
  </div>
 {% endblock maincontent %}

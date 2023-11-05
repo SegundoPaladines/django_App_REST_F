@@ -24,12 +24,15 @@ urlpatterns = [
     path('universidad/facultades/', views.FacultadesListView.as_view(), name='lista-facultades'), #detalle de la facultad
     path('facultad/<int:pk>/detail/',
          views.FacultadDetailView.as_view(), name='fac-detail'),
-    path('facultad/<int:pk>/update/',views.FacultadUpdate.as_view(),name='fac-update'), # Editar facultad
+    path('facultad/<int:pk>/update/',views.FacultadUpdate.as_view(), name='fac-update'), # Editar facultad
     path('facultad/<int:pk>/delete/', views.FacultadDelete.as_view(), name='fac-delete'), # ELiminar Facultad
     path('facultad/create/', views.FacultadCreate.as_view(), name='fac-create'), # Crear Facultad
     path('universidad/programas/', views.ProgramasListView.as_view(), name='lista-programas'), #Todos los programas
     path('programa/<int:pk>/detail/',
             views.ProgramaDetailView.as_view(), name='prog-detail'),
+    path('programa/<int:pk>/update/',views.ProgramaUpdate.as_view(), name='prog-update'), # Editar programa
+    path('programa/<int:pk>/delete/', views.ProgramaDelete.as_view(), name='prog-delete'), # ELiminar programa
+    path('programa/create/', views.ProgramaCreate.as_view(), name='prog-create'), # Crear programa
     path('universidad/docentes/', views.DocentesListView.as_view(), name='lista-docentes'), #todos los docentes
     path('docente/<int:pk>/detail/',
             views.DocenteDetailView.as_view(), name='doc-detail'),
