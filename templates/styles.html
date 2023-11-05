@@ -1,0 +1,31 @@
+{% block estilos_propios %}
+    <style>
+        .negro{
+            color:black;
+        }
+        .negro:hover{
+            color:green;
+        }
+        .card-img-container {
+            position: relative;
+            overflow: hidden;
+        }
+    
+        .card-img-container::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.2), rgba(119, 163, 69, 0.5));
+        }
+        .contenedor{
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .card{
+            margin: 10px;
+        }
+    </style>
+{% endblock %}

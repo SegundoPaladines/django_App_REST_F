@@ -1,22 +1,40 @@
 {% extends 'base.html' %}
+
 {% load static %}
 {% block section %}
- <h2>Facultades</h2>
- <a href ="{% url 'fac-create' %}" class="btn btn-success">Crear Nueva</a>
- <hr>
+  <h2>Facultades</h2>
+  {% if user.is_authenticated %}
+    <a href ="{% url 'fac-create' %}" class="btn btn-success">Crear Nueva</a>
+  {% endif %}
+  <hr>
 {% endblock section %}
 
 {% block maincontent %}
-   <div>
+    <div class="contenedor">
       {% for c in object_list %}
-        <h2>Universidad: {{c.universidad}}</h2> <br>
-        <a href="{% url 'fac-detail' c.pk %}">
-            {{ c.name }} <br>
-        </a></h2>
-        <h2><img src="{% static c.logo.url %}" style="width:70px;height:80px"/>
-        <hr/>
-        <a class="btn btn-info" href="{% url 'fac-update' c.pk %}">Editar</a>
-        <a class="btn btn-danger" href="{% url 'fac-delete' c.pk %}">Eliminar</a>
+        <div class="card" style="width: 18rem;">
+          <a href="{% url 'fac-detail' c.pk %}" class="negro">
+              <div class="card-img-container">
+                  <img
+                      style="18rem; height:18rem" 
+                      src="{% static c.logo.url %}" 
+                      class="card-img-top" 
+                      alt="Imagen {{c.name}}"
+                  >
+              </div>
+              <div class="card-body">
+                  <h5 class="card-title">{{ c.name }}</h5>
+                  <p class="card-text">Facultad adscrita a la {{c.universidad}}.</p>
+              </div>
+          </a>
+          <div class="card-body">
+            {% if user.is_authenticated %}
+              <hr/>
+              <a class="btn btn-info" href="{% url 'fac-update' c.pk %}">Editar</a>
+              <a class="btn btn-danger" href="{% url 'fac-delete' c.pk %}">Eliminar</a>
+            {% endif %}
+          </div>
+      </div>
       {% endfor %}
- </div>
+    </div>
 {% endblock maincontent %}
