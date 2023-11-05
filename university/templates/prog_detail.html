@@ -15,6 +15,9 @@
                     {{ d.first_name }} {{ d.last_name }} <br>
                     <img src="{% static d.photo.url %}" style="width:250px;height:330px" />
                 </a></h2>
+                <br>
+                <a class="btn btn-info" href="{% url 'doc-update' d.pk %}">Editar</a>
+               <a class="btn btn-danger" href="{% url 'doc-delete' d.pk %}">Eliminar</a>
              </td>
            {% endfor %}
        </tr> 

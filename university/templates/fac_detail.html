@@ -17,6 +17,8 @@
                      <img src="{% static p.logo.url %}" style="width:170px;height:200px"/>
                   </a>
                </div>
+               <a class="btn btn-info" href="{% url 'prog-update' p.pk %}">Editar</a>
+               <a class="btn btn-danger" href="{% url 'prog-delete' p.pk %}">Eliminar</a>
              </td>
            {% endfor %}
        </tr> 
