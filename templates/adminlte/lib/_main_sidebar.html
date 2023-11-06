@@ -1,0 +1,65 @@
+{% load adminlte_helpers %}
+{%load static %}
+<!-- Left side column. contains the sidebar -->
+<aside class="main-sidebar sidebar-light-success elevation-4">
+     <!-- Brand Logo -->
+    {% block logo %}
+        <a href="/" class="brand-link">
+            <img src="{%static 'admin-lte/dist/img/AdminLTELogo.png' %}" alt="Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+            {% block logo_text %}<span class="brand-text font-weight-light">Universidad </span>{% endblock %}
+        </a>
+    {% endblock %}
+    <!-- sidebar: style can be found in sidebar.less -->
+    <div class="sidebar">
+        <!-- Sidebar user panel -->
+        {% block user_panel %}
+        <!-- Sidebar user panel (optional) -->
+            {% if user.is_authenticated %}
+                <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+                    <div class="image">
+                        <img src="{% avatar_url size=90 %}" class="img-circle elevation-2" alt="User Image">
+                    </div>
+                    <div class="info">
+                        <a href="/admin" class="d-block">{% firstof request.user.get_full_name request.user.username %}</a>
+                    </div>
+                </div>
+            {% endif %}
+        {% endblock %}
+
+        {% block form %}{% endblock %}
+
+        <!-- sidebar menu: : style can be found in sidebar.less -->
+        {% block nav_links_ul %}
+        <nav class="mt-2">
+            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+            {% block nav_links_outer %}
+                <li class="nav-header">{% block nav_heading %}MENÚ PRINCIPAL{% endblock %}</li>
+
+                {% block nav_links %}
+                    <li class="nav-item">
+                        <a href="/universidad/facultades" class="nav-link {% if 'facultad' in request.path %} active{% endif %}">
+                            <i class="nav-icon fas fa-building"></i> 
+                            <p>Facultades</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/universidad/programas" class="nav-link {% if 'programa' in request.path %} active{% endif %}">
+                            <i class="nav-icon fas fa-award"></i> 
+                            <p>Programas</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/universidad/docentes" class="nav-link {% if 'docente' in request.path %} active{% endif %}">
+                            <i class="nav-icon fas fa-users"></i> 
+                            <p>Docentes</p>
+                        </a>
+                    </li>
+
+                {% endblock nav_links %}
+            {% endblock nav_links_outer %}
+            </ul>
+            </nav>
+        {% endblock nav_links_ul %}
+    </div>
+    <!-- /.sidebar -->
+</aside>
