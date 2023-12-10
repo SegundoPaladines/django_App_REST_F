@@ -11,29 +11,31 @@
 
 {% block maincontent %}
     <div class="contenedor">
-      {% for c in object_list %}
+      {% for c in facultades %}
         <div class="card" style="width: 18rem;">
-          <a href="{% url 'fac-detail' c.pk %}" class="negro">
-              <div class="card-img-container">
-                  <img
-                      style="18rem; height:18rem" 
-                      src="{% static c.logo.url %}" 
-                      class="card-img-top" 
-                      alt="Imagen {{c.name}}"
-                  >
-              </div>
-              <div class="card-body">
-                  <h5 class="card-title">{{ c.name }}</h5>
-                  <p class="card-text">Facultad adscrita a la {{c.universidad}}.</p>
-              </div>
-          </a>
-          <div class="card-body">
-            {% if user.is_authenticated %}
-              <hr/>
-              <a class="btn btn-info" href="{% url 'fac-update' c.pk %}">Editar</a>
-              <a class="btn btn-danger" href="{% url 'fac-delete' c.pk %}">Eliminar</a>
-            {% endif %}
-          </div>
+          {% if c.pk%}
+            <a href="{% url 'fac-detail' c.pk %}" class="negro">
+                <div class="card-img-container">
+                    <img
+                        style="18rem; height:18rem" 
+                        src="{{c.logo}}" 
+                        class="card-img-top" 
+                        alt="Imagen {{c.name}}"
+                    >
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">{{ c.name }}</h5>
+                    <p class="card-text">Facultad adscrita a la {{c.universidad}}.</p>
+                </div>
+            </a>
+            <div class="card-body">
+              {% if user.is_authenticated %}
+                <hr/>
+                <a class="btn btn-info" href="{% url 'fac-update' c.pk %}">Editar</a>
+                <a class="btn btn-danger" href="{% url 'fac-delete' c.pk %}">Eliminar</a>
+              {% endif %}
+            </div>
+          {% endif %}
       </div>
       {% endfor %}
     </div>

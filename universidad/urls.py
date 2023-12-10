@@ -19,6 +19,18 @@ from django.urls import path
 from university import views
 from django.contrib.auth.decorators import login_required #para que toque authenticarse
 
+##------------------------------------------------------------------------------------------------------##
+##Dar visibilidad a los archivos de media:
+from django.conf import settings
+from django.conf.urls.static import static
+
+##--------------------------------------------------------------------------------------------------------##
+##REST FRAMEWORK
+from django.urls import include
+from .router import router
+
+##---------------------------------------------------------------------------------------------------------##
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     
@@ -53,4 +65,15 @@ urlpatterns = [
     path('docente/<int:pk>/update/', login_required(views.DocenteUpdate.as_view()), name='doc-update'),  # Editar docente
     path('docente/<int:pk>/delete/', login_required(views.DocenteDelete.as_view()), name='doc-delete'),  # Eliminar docente
     path('docente/create/', login_required(views.DocenteCreate.as_view()), name='doc-create'),  # Crear docente
+
+    ##----------------------------------------------------------------------------------------------------------------------------------------##
+    ##REST FRAMEWORK
+    path('res/', include(router.urls)),
+    path('api/',include('rest_framework.urls', namespace='rest_framework')),
 ]
+
+##---------------------------------------------------------------------------------------------------------##
+##Dar visibilidad a los archivos de media:
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
