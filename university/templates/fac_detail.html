@@ -11,7 +11,7 @@
       {% for p in object.get_programas.all %}
          <div class="card" style="width: 18rem;">
             <a href="{% url "prog-detail" p.id %}" class="negro">
-               <img src="{% static p.logo.url %}" style="width:18rem; height:18rem"/>
+               <img src="{{p.logo.url}}" style="width:18rem; height:18rem"/>
                <div class="card-body">
                   <p class="card-text">{{ p. }} {{ p.name }}</p>
                   <hr />
