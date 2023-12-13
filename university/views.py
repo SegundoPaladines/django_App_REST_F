@@ -29,7 +29,7 @@ class FacultadesListView(ListView):
         
         # Hacer la solicitud a la api
         ##link de la api
-        api_url = "http://127.0.0.1:8000/res/fac_rest/"
+        api_url = "http://127.0.0.1:8000/fac_rest/"
         ## es una solicitud de tipo get <- para obtener cositas nada mas
         response = requests.get(api_url)
         
@@ -52,7 +52,7 @@ class ProgramasListView(ListView):
         
         #Hcaer la solicitud
         ##link de la api
-        api_url = "http://127.0.0.1:8000/res/prog_rest/"
+        api_url = "http://127.0.0.1:8000/prog_rest/"
         ## es una solicitud de tipo get <- para obtener cositas nada mas
         res = requests.get(api_url)
         
@@ -69,7 +69,7 @@ class ProgramasListView(ListView):
                 programa['facultad_id'] = id_fac
                 
             ##nueva solicitud para averiguar el nombre de la facultad
-            api_url = "http://127.0.0.1:8000/res/fac_rest/"
+            api_url = "http://127.0.0.1:8000/fac_rest/"
             res = requests.get(api_url)
             
             #si la nueva solicitud se hace correctamente
